@@ -1,0 +1,20 @@
+%h1 Chats
+
+.d-flex.gap-1
+  %aside
+    %ul
+      - @chats.each do |chat|
+        %li
+          -# = link_to chat.name, chat_path(chat, format: :turbo_stream)
+          = button_to chat.name, chat_path(chat, format: :turbo_stream), method: :get
+
+    %h2 New chat
+
+    = form_with model: @chat do |f|
+      = f.text_field :name, placeholder: "Chat name", autofocus: true
+
+      = f.submit "Create chat"
+
+  %main
+    = turbo_frame_tag "active_chat_messages" do
+      = render "chats/messages", chat: @chat

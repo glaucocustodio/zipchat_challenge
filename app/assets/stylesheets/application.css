@@ -8,3 +8,11 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.d-flex {
+  display: flex;
+}
+
+.gap-1 {
+  gap: 1rem;
+}

@@ -1,0 +1,13 @@
+= turbo_frame_tag "active_chat_messages" do
+  %h1= "Chat: #{chat.name}"
+
+  %ul
+    - chat.messages.each do |message|
+      %li
+        %strong= "#{message.role}: "
+        = message.content
+
+  - if chat.persisted?
+    = form_with model: Message.new, url: chat_messages_path(chat_id: chat.id) do |f|
+      = f.text_area :content, placeholder: "Message", autofocus: true, rows: 3, cols: 200
+      = f.submit "Send"

@@ -66,3 +66,5 @@ group :development, :test do
   gem "standard"
   gem "standard-rails"
 end
+
+gem "ruby_llm", "~> 1.2"
