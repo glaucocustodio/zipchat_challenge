@@ -1,0 +1,5 @@
+= turbo_frame_tag "chats" do
+  %ul
+    - chats.each do |chat|
+      %li
+        = button_to chat.name, chat_path(chat, format: :turbo_stream), method: :get

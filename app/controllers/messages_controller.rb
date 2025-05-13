@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def create
-    @chat = Chat.find(params[:chat_id])
+    @chat = Chat.find_sale(params[:chat_id])
     @chat.ask(message_params[:content])
   end
 

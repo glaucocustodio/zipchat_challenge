@@ -2,16 +2,12 @@
 
 .d-flex.gap-1
   %aside
-    %ul
-      - @chats.each do |chat|
-        %li
-          -# = link_to chat.name, chat_path(chat, format: :turbo_stream)
-          = button_to chat.name, chat_path(chat, format: :turbo_stream), method: :get
+    = render "chats/list", chats: @chats
 
     %h2 New chat
 
     = form_with model: @chat do |f|
-      = f.text_field :name, placeholder: "Chat name", autofocus: true
+      = f.text_field :name, placeholder: "Chat name", autofocus: true, required: true, minlength: 3, maxlength: 20
 
       = f.submit "Create chat"
 

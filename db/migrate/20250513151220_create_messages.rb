@@ -1,10 +1,10 @@
 class CreateMessages < ActiveRecord::Migration[8.0]
   def change
-    create_enum :message_role, %w[user system assistant]
+    create_enum :message_role, %w[user system assistant tool]
 
     create_table :messages do |t|
       t.enum :role, enum_type: "message_role", null: false
-      t.text :content, null: false
+      t.text :content
       t.references :chat, null: false, foreign_key: true
       t.string :model_id
       t.integer :input_tokens

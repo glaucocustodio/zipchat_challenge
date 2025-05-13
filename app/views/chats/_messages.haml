@@ -3,9 +3,10 @@
 
   %ul
     - chat.messages.each do |message|
-      %li
-        %strong= "#{message.role}: "
-        = message.content
+      - if message.user_friendly?
+        %li
+          %strong= "#{message.role}: "
+          = message.content
 
   - if chat.persisted?
     = form_with model: Message.new, url: chat_messages_path(chat_id: chat.id) do |f|

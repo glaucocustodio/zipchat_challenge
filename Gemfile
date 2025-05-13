@@ -68,3 +68,5 @@ group :development, :test do
 end
 
 gem "ruby_llm", "~> 1.2"
+
+gem "dotenv", "~> 3.1"

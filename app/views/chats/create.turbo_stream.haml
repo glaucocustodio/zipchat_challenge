@@ -1,2 +1,5 @@
 = turbo_stream.replace("active_chat_messages") do
   = render "chats/messages", chat: @chat
+
+= turbo_stream.replace("chats") do
+  = render "chats/list", chats: @chats

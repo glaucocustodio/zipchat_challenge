@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_160559) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_13_171938) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "message_role", ["user", "system", "assistant"]
+  create_enum "message_role", ["user", "system", "assistant", "tool"]
 
   create_table "chats", force: :cascade do |t|
     t.string "model_id"
@@ -27,7 +27,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_160559) do
 
   create_table "messages", force: :cascade do |t|
     t.enum "role", null: false, enum_type: "message_role"
-    t.text "content", null: false
+    t.text "content"
     t.bigint "chat_id", null: false
     t.string "model_id"
     t.integer "input_tokens"
@@ -37,6 +37,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_160559) do
     t.bigint "tool_call_id"
     t.index ["chat_id"], name: "index_messages_on_chat_id"
     t.index ["tool_call_id"], name: "index_messages_on_tool_call_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "product"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "phone_number"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tool_calls", force: :cascade do |t|

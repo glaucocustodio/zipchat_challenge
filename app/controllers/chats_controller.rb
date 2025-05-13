@@ -1,8 +1,6 @@
 class ChatsController < ApplicationController
-  # before_action :authenticate_user!
-
   def index
-    @chats = Chat.all
+    @chats = Chat.ordered
     @chat = Chat.new
   end
 
@@ -11,7 +9,8 @@ class ChatsController < ApplicationController
   end
 
   def create
-    @chat = Chat.new(chat_params)
+    @chats = Chat.ordered
+    @chat = Chat.sale(chat_params)
 
     if @chat.save
       @chat.activate_sales_assistant_mode!
