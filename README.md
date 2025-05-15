@@ -4,7 +4,9 @@ Challenge described [here](https://zipchat.notion.site/Dummy-AI-e-com-agent-1e37
 
 ## Solution
 
-It's a full stack Rails application.
+It's a full stack Rails application built in **~2h30m** during a live coding session.
+
+The application expects a valid OpenAI key set in  `OPENAI_API_KEY`.
 
 It relies on the [ruby_llm](https://github.com/crmne/ruby_llm) gem to power the chat + tool invocation.
 
@@ -15,11 +17,13 @@ There are two tools available:
 
 Worth highlighting that both tools could easily be extended to integrate with 3rd party APIs, validate the params etc.
 
-The solution is far from ready to production due the short amount of time I had to do it.
+The solution **is far from ready to production** due the short amount of time I had to do it.
 
-I would be more than happy to join a call to discuss improvements.
+## Showcase
 
-🎬 A video demo is available in the folder `showcase/demo.mov`.
+![Summary](showcase/demo.gif)
+
+🎬 A video demo is also available in the folder `showcase/demo.mov`.
 
 ## Running
 
